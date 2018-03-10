@@ -18,7 +18,7 @@ extract(parse_ini_file('config.ini'));
 
 if (
     !isset($_POST['page'])
-    || !isset($_POST['paper'])
+    || !isset($_POST['doi'])
     || !isset($_POST['context'])
     || !isset($_POST['reason'])
 ) {
@@ -28,7 +28,7 @@ if (
 
 
 $page = $_POST['page'];
-$paper = $_POST['paper'];
+$doi = $_POST['doi'];
 $context = $_POST['context'];
 $reason = $_POST['reason'];
 
@@ -56,13 +56,13 @@ $resultAssoc = $result->fetch_assoc();
 $pageId = $resultAssoc['id'];
 
 
-$sql = "SELECT id FROM academic_paper WHERE paper = '$paper'";
+$sql = "SELECT id FROM academic_paper WHERE doi = '$doi'";
 $result = $conn->query($sql);
 if ($result->num_rows === 0) {
-    $sql = "INSERT INTO academic_paper(paper) VALUES ('$paper')";
+    $sql = "INSERT INTO academic_paper(doi) VALUES ('$doi')";
     $result = $conn->query($sql);
 }
-$sql = "SELECT id FROM academic_paper WHERE paper = '$paper'";
+$sql = "SELECT id FROM academic_paper WHERE doi = '$doi'";
 $result = $conn->query($sql);
 $resultAssoc = $result->fetch_assoc();
 $paperId = $resultAssoc['id'];
