@@ -59,4 +59,9 @@ $(document).ready(function () {
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
             });
         });
+
+    $(document)
+        .on('click', '.vote-link', function (evt) {
+
+        });
 });
