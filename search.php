@@ -8,12 +8,17 @@
 
 $q = $_GET['q'];
 
-$searchUrl = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=" . $q . "&format=json";
+$searchUrl = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=" . $q . "%20open_access:y&format=json&resulttype=core";
 
 $results = file_get_contents($searchUrl);
 $decodedResults = json_decode($results);
 
 foreach ($decodedResults->resultList->result as $resultItem) {
+
+    foreach($resultItem->fullTextUrlList as $fullTextUrl){
+        $url = $fullTextUrl[0]->url;
+        break;
+    }
 
     $doi = $resultItem->doi;
     $title = $resultItem->title;
@@ -22,6 +27,9 @@ foreach ($decodedResults->resultList->result as $resultItem) {
     echo "<br>";
     echo 'TITLE:'.$title;
     echo "<br>";
+    echo 'URL:'.$url;
     echo "<br>";
     echo "<br>";
+    echo "<br>";
+
 }
