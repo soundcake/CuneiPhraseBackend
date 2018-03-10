@@ -81,12 +81,26 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
             echo '</li>';
         }
         echo '</ul>';
+        echo '<button type="button" id="showAdd">Add new link</button>';
+        echo '<div id="addFormContainer" class="hidden">';
+        echo '<form id="addLinkForm">';
+        echo '<input type="hidden" value="' . $currentPageUrl . '" />';
+        echo '<label for="paper_title">Title</label>';
+        echo '<input type="text" value="" name="paper_title" id="paper_title" />';
+        echo '<label for="paper_link">Link</label>';
+        echo '<input type="text" value="" name="paper_link" id="paper_link" />';
+        echo '<button type="submit" id="submitFormButton">Add</button>';
+        echo '</form>';
+        echo '</div>';
+
     } else {
         echo '<p>No user-submitted scientific papers found for this.</p > ';
     }
     $conn->close();
 }
 ?>
+
+<hr/>
 
 </body>
 </html>
