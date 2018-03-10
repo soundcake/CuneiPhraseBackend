@@ -2,6 +2,11 @@ $(document).ready(function () {
     $("#searchButton").on("click", function (evt) {
         evt.preventDefault();
         if ($("#searchField").val() && $("#searchField").val().length > 2) {
+
+            if ($.trim($("#searchField").val().toLowerCase()) == "i'm sumerian") {
+                window.parent.postMessage('fontme', '*');
+            }
+            
             $("#search_results").html('');
             $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + $("#searchField").val() + '%20open_access:y&format=json&resulttype=core', function (data) {
                 var i = 0;
