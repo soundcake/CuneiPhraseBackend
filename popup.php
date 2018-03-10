@@ -124,17 +124,20 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
             echo '</li>';
         }
         echo '</ul>';
-        echo '<button type="button" id="showAdd">Add new link</button>';
-        echo '<div id="addFormContainer" class="hidden">';
-        echo '<form id="addLinkForm">';
+        /*
+        echo '<hr />';
+        echo '<p>Search academic papers for more:</p>';
+        echo '<div id="searchFormContainer">';
+        echo '<form id="searchForm">';
         echo '<input type="hidden" value="' . $currentPageUrl . '" />';
-        echo '<label for="paper_title">Title</label>';
+        echo '<label for="search_field">Search</label>';
         echo '<input type="text" value="" name="paper_title" id="paper_title" />';
         echo '<label for="paper_link">Link</label>';
         echo '<input type="text" value="" name="paper_link" id="paper_link" />';
-        echo '<button type="submit" id="submitFormButton">Add</button>';
+        echo '<button type="submit" id="submitFormButton">Search</button>';
         echo '</form>';
         echo '</div>';
+        */
 
     } else {
         echo '<p>No user-submitted scientific papers found for this.</p > ';
