@@ -149,7 +149,10 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
         echo '<input type="text" id="search_field" name="search_field"/>';
         echo '<button type="button" id="showAdd">Search</button>';
         echo '</div>';
-
+        ?>
+        <div id="search_results"></div>
+        <?php
+        echo '<hr />';
     } else {
         echo '<p>No user-submitted scientific papers found for this.</p > ';
     }
