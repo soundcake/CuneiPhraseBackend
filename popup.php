@@ -66,13 +66,13 @@ INNER JOIN web_page
 ON web_page.id = page_to_paper.web_page_id
 WHERE web_page.link = '" . $currentPageUrl . "'";
     $result = $conn->query($sql);
-    echo var_dump($result);
+    //echo var_dump($result);
     if ($result->num_rows > 0) {
         echo '<p>Our users submitted the following scientific papers related to this article:</p>';
         echo '<ul>';
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo var_dump($row);
+            //echo var_dump($row);
 
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li>';
