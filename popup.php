@@ -113,6 +113,11 @@ if ($conn->connect_error) {
             color: green;
             font-weight: bold;
         }
+
+        .vote-count {
+            font-weight: normal;
+            color: #666;
+        }
     </style>
 
     <script src="/js/jquery.js"></script>
@@ -139,6 +144,7 @@ SELECT
 web_page.link AS web_page,
 academic_paper.link,
 academic_paper.title,
+academic_paper.doi AS doi,
 page_to_paper.link_context,
 page_to_paper.reason, 
 page_to_paper.vote_count AS vote_count
@@ -158,10 +164,10 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
             //echo var_dump($row);
 
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
-            echo '<li>';
-            echo '<a data-index="" class="vote-link green" href="#">&uarr;</a>';
+            echo '<li class="link-listing">';
+            echo '<a data-index="' . $row['doi'] . '|' . $row['link'] . '|' . $row['title'] . '|up" class="vote-link green" href="#">&uarr;</a>';
             echo '<span class="vote-count">[' . $row['vote_count'] . ']</span>';
-            echo '<a data-index="" class="vote-link red" href="#">&darr;</a>';
+            echo '<a data-index="' . $row['doi'] . '|' . $row['link'] . '|' . $row['title'] . '|down" class="vote-link red" href="#">&darr;</a>';
             echo '<a href="' . $row['link'] . '" target="_blank">' . $row['title'] . '</a>';
             echo '</li>';
         }

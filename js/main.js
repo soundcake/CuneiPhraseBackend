@@ -15,7 +15,7 @@ $(document).ready(function () {
                             url = value[0]['url'];
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
-                                '<a data-index="' + doi + '|' + url + '|' + title + '|up" class="vote-link green" href="#">&uarr;</a>' +
+                                '<a data-index="' + doi + '|' + url + '|' + title + '|up" class="vote-from-search-link green" href="#">&uarr;</a>' +
                                 '<a href="' + url + '" data-indext="' + doi + '" target="_blank">' + title + '</a>' +
                                 '</li>');
                         });
@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
     //
     $(document)
-        .on('click', '.vote-link', function (evt) {
+        .on('click', '.vote-from-search-link', function (evt) {
             //alert('click is happening');
             evt.preventDefault();
             var dataIndex = $(this).attr('data-index');
@@ -43,7 +43,10 @@ $(document).ready(function () {
                 reason: 'because'
             }).done(function () {
                 $(this).hide();
-                $('#initial_list').append('<li>' +
+                $('#initial_list').append('<li class="link-listing">' +
+                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|up" class="vote-link green" href="#">&uarr;</a>' +
+                    '<span class="vote-count">[1]</span>' +
+                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|down" class="vote-link green" href="#">&uarr;</a>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
