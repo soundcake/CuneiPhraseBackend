@@ -72,8 +72,8 @@ $resultAssoc = $result->fetch_assoc();
 $paperId = $resultAssoc['id'];
 
 if ($paperId && $pageId) {
-    $sql = "INSERT INTO page_to_paper (academic_paper_id, web_page_id, link_context, reason)
-VALUES ($paperId,$pageId,'$context','$reason')";
+    $sql = "INSERT INTO page_to_paper (academic_paper_id, web_page_id, link_context, reason, vote_count)
+VALUES ($paperId,$pageId,'$context','$reason', 1)";
     $result = $conn->query($sql);
 }
 
