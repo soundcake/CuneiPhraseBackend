@@ -16,7 +16,7 @@ $(document).ready(function () {
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
                                 '<a href="' + url + '" data-indext="' + doi + '" target="_blank">' + title + '</a>' +
-                                '<button data-index="' + doi + '|' + url + '|' + title + '" class="add-link">Add</button>' +
+                                '<button data-index="' + doi + '|' + url + '|' + title + '" class="add-link" type="button">Add</button>' +
                                 '</li>');
                         });
                         i++;
