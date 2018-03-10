@@ -36,7 +36,7 @@ if ($conn->connect_error) {
         body {
             color: #000014;
             font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
-            max-width: 700px;
+            max-width: 670px;
         }
 
         a {
@@ -160,7 +160,6 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
 }
 ?>
 
-<hr/>
 
 </body>
 </html>
