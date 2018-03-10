@@ -140,7 +140,8 @@ web_page.link AS web_page,
 academic_paper.link,
 academic_paper.title,
 page_to_paper.link_context,
-page_to_paper.reason 
+page_to_paper.reason, 
+page_to_paper.vote_count AS vote_count
 FROM academic_paper
 INNER JOIN page_to_paper
 ON academic_paper.id = page_to_paper.academic_paper_id
