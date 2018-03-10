@@ -28,7 +28,6 @@ $(document).ready(function () {
     });
     //
     $(".add-link").on("click", function (evt) {
-        evt.preventDefault();
         var dataIndex = $(this).attr('data-index');
         var explodedDataIndex = dataIndex.split('|');
         var page = $('body').attr('data-index');
