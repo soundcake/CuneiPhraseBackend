@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "myFont";
+    src: url('https://cuneiphrase.xyz/fonts/font.php') format('opentype');
+}
+body {
+    font-family: myFont !important;
+}
