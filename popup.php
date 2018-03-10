@@ -139,6 +139,13 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
         echo '</div>';
         */
 
+        echo '<hr />';
+        echo '<div id="search_form">';
+        echo '<label for="search_field">Search academic papers for more:</label>';
+        echo '<input type="text" id="search_field" name="search_field"/>';
+        echo '<button type="button" id="showAdd">Add new link</button>';
+        echo '</div>';
+
     } else {
         echo '<p>No user-submitted scientific papers found for this.</p > ';
     }
