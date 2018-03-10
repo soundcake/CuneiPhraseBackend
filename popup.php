@@ -89,9 +89,17 @@ if ($conn->connect_error) {
         #searchButton {
             float: left;
             clear: both;
+            margin-top: 5px;
         }
 
         #searchField {
+            float: left;
+            margin-top: 5px;
+            clear: both;
+        }
+
+        #search_results {
+            margin-top: 5px;
             float: left;
             clear: both;
         }
