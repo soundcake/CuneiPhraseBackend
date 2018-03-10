@@ -68,12 +68,13 @@ WHERE web_page.link = $urrrentPageUrl
 ";
     $result = $conn->query($sql);
 
-    if (count($result) > 0) {
-        echo var_dump($result);
+    if ($result) {
         echo '<p>Our users submitted the following scientific papers related to this article:</p>';
         echo '<ul>';
         // output data of each row
         while ($row = $result->fetch_assoc()) {
+            echo var_dump($row);
+
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li>';
             echo '<a href="' . $row['paper'] . '" targe="_blank">' . $row['paper'] . '</a>';
