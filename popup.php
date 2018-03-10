@@ -68,7 +68,7 @@ WHERE web_page.link = $urrrentPageUrl
 ";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if (count($result) > 0) {
         echo '<p>Our users submitted the following scientific papers related to this article:</p>';
         echo '<ul>';
         // output data of each row
