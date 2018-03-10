@@ -17,12 +17,12 @@ extract(parse_ini_file('config.ini'));
 
 
 if (
-    !isset($_POST['page'])
-    || !isset($_POST['doi'])
-    || !isset($_POST['paper_title'])
-    || !isset($_POST['paper_link'])
-    || !isset($_POST['context'])
-    || !isset($_POST['reason'])
+    !(isset($_POST['page']) || strlen($_POST['page']) < 1)
+    || (!isset($_POST['doi']) || strlen($_POST['doi']) < 1)
+    || (!isset($_POST['paper_title']) || strlen($_POST['paper_title']) < 1)
+    || (!isset($_POST['paper_link']) || strlen($_POST['paper_title']) < 1)
+    || (!isset($_POST['context']) || strlen($_POST['context']) < 1)
+    || (!isset($_POST['reason']) || strlen($_POST['reason']) < 1)
 ) {
     echo 'missing param';
     exit;
