@@ -77,7 +77,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
 
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li>';
-            echo '<a href="' . $row['link'] . '" targe="_blank">' . $row['title'] . '</a>';
+            echo '<a href="' . $row['link'] . '" target="_blank">' . $row['title'] . '</a>';
             echo '</li>';
         }
         echo '</ul>';
