@@ -109,7 +109,7 @@ if ($conn->connect_error) {
     <script src="/js/main.js"></script>
 
 </head>
-<body>
+<body data-index="<?php echo $currentPageUrl; ?>">
 
 
 <h1>CuneiPhrase</h1>
@@ -141,7 +141,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
     //echo var_dump($result);
     if ($result->num_rows > 0) {
         echo '<p>Our users submitted the following scientific papers related to this article:</p>';
-        echo '<ul>';
+        echo '<ul id="initial_list">';
         // output data of each row
         while ($row = $result->fetch_assoc()) {
             //echo var_dump($row);

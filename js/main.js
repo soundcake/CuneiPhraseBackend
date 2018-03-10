@@ -16,6 +16,7 @@ $(document).ready(function () {
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
                                 '<a href="' + url + '" data-indext="' + doi + '" target="_blank">' + title + '</a>' +
+                                '<button data-index="' + doi + '|' + url + '|' + title + '" class="add-link">Add</button>' +
                                 '</li>');
                         });
                         i++;
@@ -24,5 +25,26 @@ $(document).ready(function () {
                 $("#search_results").append('</ul>');
             });
         }
+    });
+    //
+    $(".add-link").on("click", function (evt) {
+        evt.preventDefault();
+        var dataIndex = $(this).attr('data-index');
+        var explodedDataIndex = dataIndex.split('|');
+        var page = $('body').attr('data-index');
+        $.post('https://cuneiphrase.xyz/addlink.php', {
+            page: '' + page,
+            doi: '' + explodedDataIndex[0],
+            paper_title: '' + explodedDataIndex[2],
+            paper_link: '' + explodedDataIndex[1],
+            context: 'yes yes',
+            reason: 'because',
+        }).done(function () {
+            $(this).hide();
+            $('#initial_list').append('<li>' +
+                '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
+                '</li>');
+        });
+
     });
 });
