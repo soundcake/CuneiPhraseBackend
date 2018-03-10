@@ -28,6 +28,7 @@ $(document).ready(function () {
     });
     //
     $(".add-link").on("click", function (evt) {
+        alert('click is happening');
         var dataIndex = $(this).attr('data-index');
         var explodedDataIndex = dataIndex.split('|');
         var page = $('body').attr('data-index');
@@ -39,10 +40,10 @@ $(document).ready(function () {
         //    context: 'yes yes',
         //    reason: 'because'
         //}).done(function () {
-            $(this).hide();
-            $('#initial_list').append('<li>' +
-                '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
-                '</li>');
+        $(this).hide();
+        $('#initial_list').append('<li>' +
+            '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
+            '</li>');
         //});
 
     });
