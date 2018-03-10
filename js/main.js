@@ -29,23 +29,23 @@ $(document).ready(function () {
     //
     $(document)
         .on('click', '.add-link', function (evt) {
-            alert('click is happening');
+            //alert('click is happening');
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
             var page = $('body').attr('data-index');
-            //$.post('https://cuneiphrase.xyz/addlink.php', {
-            //    page: '' + page,
-            //    doi: '' + explodedDataIndex[0],
-            //    paper_title: '' + explodedDataIndex[2],
-            ////    paper_link: '' + explodedDataIndex[1],
-            //    context: 'yes yes',
-            //    reason: 'because'
-            //}).done(function () {
-            $(this).hide();
-            $('#initial_list').append('<li>' +
-                '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
-                '</li>');
-            //});
+            $.post('https://cuneiphrase.xyz/addlink.php', {
+                page: '' + page,
+                doi: '' + explodedDataIndex[0],
+                paper_title: '' + explodedDataIndex[2],
+                paper_link: '' + explodedDataIndex[1],
+                context: 'yes yes',
+                reason: 'because'
+            }).done(function () {
+                $(this).hide();
+                $('#initial_list').append('<li>' +
+                    '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
+                    '</li>');
+            });
 
         });
 });
