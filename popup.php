@@ -83,9 +83,16 @@ if ($conn->connect_error) {
         label {
             width: 100%;
             clear: both;
+            float: left;
         }
 
-        button {
+        #searchButton {
+            float: left;
+            clear: both;
+        }
+
+        #searchField {
+            float: left;
             clear: both;
         }
     </style>
