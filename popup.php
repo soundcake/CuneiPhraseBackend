@@ -34,7 +34,50 @@ if ($conn->connect_error) {
 <head>
     <style>
         body {
+            color: #000014;
             font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+            max-width: 700px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4280f4;
+        }
+
+        a:hover {
+            border-bottom: 1px dotted #4280f4;
+        }
+
+        hr {
+            color: #CEFFFF;
+            border-color: #CEFFFF;
+        }
+
+        #addFormContainer {
+            border: 1px solid #CEFFFF;
+            border-radius: 10px;
+            width: 100%;
+            clear: both;
+            padding: 10px;
+        }
+
+        #addLinkForm {
+            width: 100%;
+            display: block;
+            clear: both;
+        }
+
+        #addLinkForm label {
+            width: 100%;
+            float: left;
+            clear: both;
+            margin-top: 15px;
+        }
+
+        #addLinkForm input {
+            width: 100%;
+            float: left;
+            clear: both;
         }
     </style>
 </head>
