@@ -159,6 +159,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li>';
             echo '<a data-index="" class="vote-link green" href="#">&uarr;</a>';
+            echo '<span class="vote-count">[' . $row['vote_count'] . ']</span>';
             echo '<a data-index="" class="vote-link red" href="#">&darr;</a>';
             echo '<a href="' . $row['link'] . '" target="_blank">' . $row['title'] . '</a>';
             echo '</li>';
