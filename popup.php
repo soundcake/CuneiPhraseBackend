@@ -145,9 +145,9 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
 
         echo '<hr />';
         echo '<div id="search_form">';
-        echo '<label for="search_field">Search academic papers for more:</label>';
-        echo '<input type="text" id="search_field" name="search_field"/>';
-        echo '<button type="button" id="showAdd">Search</button>';
+        echo '<label for="searchField">Search academic papers for more:</label>';
+        echo '<input type="text" id="searchField" name="searchField"/>';
+        echo '<button type="button" id="searchButton">Search</button>';
         echo '</div>';
         ?>
         <div id="search_results"></div>
