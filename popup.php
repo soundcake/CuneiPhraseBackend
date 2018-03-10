@@ -140,7 +140,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
     $result = $conn->query($sql);
     //echo var_dump($result);
     if ($result->num_rows > 0) {
-        echo '<p>Our users submitted the following scientific papers related to this article:</p>';
+        echo '<p id="firstParagraph">Our users submitted the following scientific papers related to this article:</p>';
         echo '<ul id="initial_list">';
         // output data of each row
         while ($row = $result->fetch_assoc()) {
@@ -178,7 +178,19 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
         <?php
         echo '<hr />';
     } else {
-        echo '<p>No user-submitted scientific papers found for this.</p > ';
+        echo '<p id="firstParagraph">No user-submitted scientific papers found for this.</p > ';
+        echo '<ul id="initial_list">';
+        echo '</ul>';
+        echo '<hr />';
+        echo '<div id="search_form">';
+        echo '<label for="searchField">Search academic papers for more:</label>';
+        echo '<input type="text" id="searchField" name="searchField"/>';
+        echo '<button type="button" id="searchButton">Search</button>';
+        echo '</div>';
+        ?>
+        <div id="search_results"></div>
+        <?php
+        echo '<hr />';
     }
     $conn->close();
 }
