@@ -36,7 +36,7 @@ if ($conn->connect_error) {
         body {
             color: #000014;
             font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
-            max-width: 670px;
+            max-width: 660px;
         }
 
         a {
@@ -77,6 +77,15 @@ if ($conn->connect_error) {
         #addLinkForm input {
             width: 100%;
             float: left;
+            clear: both;
+        }
+
+        label {
+            width: 100%;
+            clear: both;
+        }
+
+        button {
             clear: both;
         }
     </style>
