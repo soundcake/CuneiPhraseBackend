@@ -56,7 +56,8 @@ if ($currentPageUrl && strlen($currentPageUrl) > 0) {
     $sql = "
 SELECT 
 web_page.link AS web_page,
-academic_paper.paper,
+academic_paper.link,
+academic_paper.title,
 page_to_paper.link_context,
 page_to_paper.reason 
 FROM academic_paper
@@ -76,7 +77,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
 
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li>';
-            echo '<a href="' . $row['paper'] . '" targe="_blank">' . $row['paper'] . '</a>';
+            echo '<a href="' . $row['link'] . '" targe="_blank">' . $row['title'] . '</a>';
             echo '</li>';
         }
         echo '</ul>';
