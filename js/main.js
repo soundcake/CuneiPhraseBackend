@@ -15,8 +15,8 @@ $(document).ready(function () {
                             url = value[0]['url'];
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
-                                '<a href="' + url + '" data-indext="' + doi + '" target="_blank">' + title + '</a>' +
                                 '<a data-index="' + doi + '|' + url + '|' + title + '|up" class="vote-link green" href="#">&uarr;</a>' +
+                                '<a href="' + url + '" data-indext="' + doi + '" target="_blank">' + title + '</a>' +
                                 '</li>');
                         });
                         i++;
@@ -30,6 +30,7 @@ $(document).ready(function () {
     $(document)
         .on('click', '.vote-link', function (evt) {
             //alert('click is happening');
+            evt.preventDefault();
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
             var page = $('body').attr('data-index');
