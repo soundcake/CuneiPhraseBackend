@@ -64,11 +64,11 @@ INNER JOIN page_to_paper
 ON academic_paper.id = page_to_paper.academic_paper_id
 INNER JOIN web_page 
 ON web_page.id = page_to_paper.web_page_id
-WHERE web_page.link = $urrrentPageUrl
+WHERE web_page.link = $currrentPageUrl
 ";
     $result = $conn->query($sql);
 
-    if ($result) {
+    if ($result->num_rows > 0) {
         echo '<p>Our users submitted the following scientific papers related to this article:</p>';
         echo '<ul>';
         // output data of each row
