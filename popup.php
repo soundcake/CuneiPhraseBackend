@@ -80,6 +80,10 @@ if ($conn->connect_error) {
             clear: both;
         }
     </style>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main.js"></script>
+
 </head>
 <body>
 
@@ -143,7 +147,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
         echo '<div id="search_form">';
         echo '<label for="search_field">Search academic papers for more:</label>';
         echo '<input type="text" id="search_field" name="search_field"/>';
-        echo '<button type="button" id="showAdd">Add new link</button>';
+        echo '<button type="button" id="showAdd">Search</button>';
         echo '</div>';
 
     } else {
