@@ -38,7 +38,7 @@ $(document).ready(function () {
             paper_title: '' + explodedDataIndex[2],
             paper_link: '' + explodedDataIndex[1],
             context: 'yes yes',
-            reason: 'because',
+            reason: 'because'
         }).done(function () {
             $(this).hide();
             $('#initial_list').append('<li>' +
