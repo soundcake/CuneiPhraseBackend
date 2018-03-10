@@ -60,13 +60,17 @@ $resultAssoc = $result->fetch_assoc();
 $pageId = $resultAssoc['id'];
 
 
-$sql = "SELECT id FROM academic_paper WHERE doi = '$doi'";
+$sql = "SELECT id, vote_count FROM academic_paper WHERE doi = '$doi'";
 $result = $conn->query($sql);
 if ($result->num_rows === 0) {
     $sql = "INSERT INTO academic_paper(doi, title, link) VALUES ('$doi', '$paperTitle', '$paperLink')";
     $result = $conn->query($sql);
 } else {
-    //$sql = "UPDATE academic_paper SET vote";
+    $resultAssoc = $result->fetch_assoc();
+    $id = $resultAssoc['id'];
+    $voteCount = $resultAssoc['vote_count'];
+    $voteCount++;
+    $sql = "UPDATE academic_paper SET vote_count = '$voteCount' WHERE id = '$id'";
 }
 $sql = "SELECT id FROM academic_paper WHERE doi = '$doi'";
 $result = $conn->query($sql);
