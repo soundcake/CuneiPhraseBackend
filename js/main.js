@@ -46,7 +46,7 @@ $(document).ready(function () {
                 $('#initial_list').append('<li class="link-listing">' +
                     '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|up" class="vote-link green" href="#">&uarr;</a>' +
                     '<span class="vote-count">[1]</span>' +
-                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|down" class="vote-link green" href="#">&uarr;</a>' +
+                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|down" class="vote-link red" href="#">&darr;</a>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
