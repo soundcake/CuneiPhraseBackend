@@ -82,6 +82,11 @@ if ($conn->connect_error) {
             clear: both;
         }
 
+        input[type=checkbox] {
+            position: relative;
+            top: 4px;
+        }
+
         label {
             width: 100%;
             clear: both;
@@ -92,6 +97,11 @@ if ($conn->connect_error) {
             float: left;
             clear: both;
             margin-top: 5px;
+        }
+
+        #advancedButton {
+            float: left;
+            margin-top: 18px;
         }
 
         #searchSuggested {
@@ -294,6 +304,15 @@ ORDER BY vote_count DESC
         if ($keywords) {
             echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
+        echo '<a href="#" id="advancedButton">advanced</a>';
+
+        echo '<div id="advancedControls" style="display: none;">';
+        echo '<label for="sortByCitations">Sort By Citations';
+        echo '<input id="sortByCitations" type="checkbox"></label>';
+        echo '<label for="searchSynonyms">Search Synonyms';
+        echo '<input id="searchSynonyms" type="checkbox"></label>';
+        echo '</div>';
+
         echo '</div>';
         ?>
         <div id="search_results"></div>
@@ -312,6 +331,16 @@ ORDER BY vote_count DESC
         if ($keywords) {
             echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
+        echo '<a href="#" id="advancedButton">advanced</a>';
+
+        echo '<div id="advancedControls" style="display: none;">';
+        echo '<label for="sortByCitations">Sort By Citations';
+        echo '<input id="sortByCitations" type="checkbox"></label>';
+        echo '<label for="searchSynonyms">Search Synonyms';
+        echo '<input id="searchSynonyms" type="checkbox"></label>';
+        echo '</div>';
+
+        echo '</div>';
         echo '</div>';
         ?>
         <div id="search_results"></div>

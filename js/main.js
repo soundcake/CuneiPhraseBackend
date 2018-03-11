@@ -1,4 +1,16 @@
 $(document).ready(function () {
+
+    $('#advancedButton').on('click', function (evt) {
+        evt.preventDefault();
+        $('#advancedControls').toggle();
+    });
+
+    $('#searchField').on('keypress', function (evt) {
+        if (evt.originalEvent.key == 'Enter') {
+            $(".search-button").click();
+        }
+    });
+
     $(".search-button").on("click", function (evt) {
         evt.preventDefault();
         var searchMethod = $(evt.currentTarget).attr('id');
@@ -89,10 +101,10 @@ $(document).ready(function () {
                         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                         $('#paper_skills_timer').html(minutes + "m " + seconds + "s ");
 
-                        var charsPerSecond = correctText.length/totalSeconds;
+                        var charsPerSecond = correctText.length / totalSeconds;
                         charsPerSecond = parseFloat(charsPerSecond).toFixed(2);
-                        var msg = "What Skills! " + correctText.length + " characters in " + minutes + "m " + seconds + "s. That's "+charsPerSecond+" characters a second!";
-                        $("#search_results").prepend("<div id='paper_skills_report'>"+msg+"</div>");
+                        var msg = "What Skills! " + correctText.length + " characters in " + minutes + "m " + seconds + "s. That's " + charsPerSecond + " characters a second!";
+                        $("#search_results").prepend("<div id='paper_skills_report'>" + msg + "</div>");
 
                         $('.paper_skills_text,#paper_skills_timer,.paper_skills_input,#cancelSkillsButton').remove();
 
@@ -105,7 +117,16 @@ $(document).ready(function () {
             }
 
             $("#search_results").html('');
-            $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y&format=json&resulttype=core', function (data) {
+            var searchUrl = 'https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y';
+            if ($("#sortByCitations").is(':checked')) {
+                searchUrl = searchUrl + "%20sort_cited:y";
+            }
+            if ($("#searchSynonyms").is(':checked')) {
+                searchUrl = searchUrl + "&synonym=true";
+            }
+            searchUrl = searchUrl + "&format=json&resulttype=core";
+
+            $.getJSON(searchUrl, function (data) {
                 if (
                     data['hitCount'] == 0
                     && searchMethod == 'searchSuggested'
