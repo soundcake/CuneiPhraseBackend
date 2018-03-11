@@ -52,7 +52,7 @@ $(document).ready(function () {
                 window.parent.postMessage('fontme', '*');
             }
 
-            if ($.trim() == "testing terminator") {
+            if ($.trim(searchString.toLowerCase()) == "testing terminator") {
                 $(window.parent.document).html('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/> ');
             }
 
