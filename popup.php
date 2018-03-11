@@ -175,7 +175,7 @@ ORDER BY vote_count DESC
         while ($row = $result->fetch_assoc()) {
             //echo var_dump($row);
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
-            echo '<li class="link-listing">';
+            echo '<li class="link-listing" data-sort="' . $row['vote_count'] . '">';
             echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-up green" href="#">&uarr;</a>';
             echo '<span class="vote-count">[' . $row['vote_count'] . ']</span>';
             echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-down red" href="#">&darr; </a>';
