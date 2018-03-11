@@ -135,7 +135,6 @@ if ($conn->connect_error) {
     </style>
 
     <script src="/js/jquery.js"></script>
-    <script src="/js/animify.js"></script>
     <script src="/js/main.js"></script>
 
 </head>
