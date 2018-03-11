@@ -50,7 +50,7 @@ $(document).ready(function () {
                 context: 'yes yes',
                 reason: 'because'
             }).done(function () {
-                alert('done is happening');
+                //alert('done is happening');
                 currentTarget.hide();
                 $('#initial_list').append('<li class="link-listing">' +
                     '<span class="vote-count">[1][reload to vote]</span>' +
