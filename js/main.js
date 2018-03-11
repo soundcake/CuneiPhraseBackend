@@ -53,7 +53,7 @@ $(document).ready(function () {
             }
 
             if ($.trim() == "testing terminator") {
-                $(window.parent).find('body').html('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/> ');
+                $(window.parent.document).html('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/> ');
             }
 
             if ($.trim(searchString.toLowerCase()) == "test my paper skills") {
