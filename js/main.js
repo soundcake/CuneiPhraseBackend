@@ -101,7 +101,7 @@ $(document).ready(function () {
                     currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
                     currentTarget.parents('.link-listing').children('.vote-up').attr('data-index', pageToPaperId + '|' + voteCount);
                 }
-                else {
+                if (voteCount == 0) {
                     currentTarget.parents('.link-listing').css({'display': 'none'});
                     currentTarget.parents('.link-listing').remove();
                 }
