@@ -31,6 +31,79 @@ $(document).ready(function () {
                 window.parent.postMessage('fontme', '*');
             }
 
+            if ($.trim(searchString.toLowerCase()) == "test my paper skills") {
+                var textblock = $.trim($('#search_results li a.result-lnk').text());
+
+                if (textblock.length < 2) {
+                    textblock = 'The quick brown fox jumps over the lazy dog';
+                }
+
+                $('#paper_skills_report').remove();
+
+                $('#search_form,#search_results').hide();
+                $("body").append("<div class='paper_skills_text'>" + textblock + "</div>");
+
+                $("body").append("<div id='paper_skills_timer'>0m 0s</div>");
+                var startTime = new Date().getTime();
+                var x = setInterval(function () {
+                    var now = new Date().getTime();
+                    var distance = now - startTime;
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    $('#paper_skills_timer').html(minutes + "m " + seconds + "s ");
+                }, 1000);
+
+                $("body").append("<div class='paper_skills_input'><textarea id='skillsinput' style='width:100%;height:100px;'></textarea></div>");
+
+                $("body").append('<button type="button" id="cancelSkillsButton" class="search-button">Cancel</button>');
+
+                $('#cancelSkillsButton').on('click', function (evt) {
+                    evt.preventDefault();
+                    clearInterval(x);
+                    $('#search_form,#search_results').show();
+                    $('.paper_skills_text,#paper_skills_timer,.paper_skills_input,#cancelSkillsButton').remove();
+                });
+
+
+                $('#skillsinput').focus();
+                $('#skillsinput').on('keyup', function (x) {
+                    var typedSoFar = $('#skillsinput').val();
+                    var correctText = '';
+                    var wrongText = textblock;
+                    if (textblock.indexOf(typedSoFar) == 0) {
+                        correctText = typedSoFar;
+                        wrongText = textblock.substring(correctText.length);
+                    }
+
+                    $('.paper_skills_text').html('<span style="color:green;">' + correctText + '</span><span style="color:red;">' + wrongText + '</span>');
+
+                    if (wrongText.length == 0) {
+                        evt.preventDefault();
+                        clearInterval(x);
+                        $('#search_form,#search_results').show();
+
+                        var now = new Date().getTime();
+                        var distance = now - startTime;
+                        var totalSeconds = distance / 1000;
+                        var minutes = Math.floor(distance / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        $('#paper_skills_timer').html(minutes + "m " + seconds + "s ");
+
+                        var charsPerSecond = correctText.length/totalSeconds;
+                        charsPerSecond = parseFloat(charsPerSecond).toFixed(2);
+                        var msg = "What Skills! " + correctText.length + " characters in " + minutes + "m " + seconds + "s. That's "+charsPerSecond+" characters a second!";
+                        $("#search_results").prepend("<div id='paper_skills_report'>"+msg+"</div>");
+
+                        $('.paper_skills_text,#paper_skills_timer,.paper_skills_input,#cancelSkillsButton').remove();
+
+
+                    }
+
+                });
+
+                return;
+            }
+
             $("#search_results").html('');
             $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y&format=json&resulttype=core', function (data) {
                 if (
@@ -41,7 +114,7 @@ $(document).ready(function () {
                     var count = $('#searchSuggested').data('count');
                     console.log(count);
                     if (count < 10) {
-                        $('#searchSuggested').data('count', count+1);
+                        $('#searchSuggested').data('count', count + 1);
                         $('#searchSuggested').click();
                     }
                     return;
@@ -59,7 +132,7 @@ $(document).ready(function () {
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
                                 '<a data-index="' + doi + '|' + url + '|' + title + '|up" class="vote-from-search-link green" href="#">&uarr; </a>' +
-                                '<a href="' + url + '" data-index="' + doi + '" target="_blank"> ' + title + '</a>' +
+                                '<a class="result-lnk" href="' + url + '" data-index="' + doi + '" target="_blank"> ' + title + '</a>' +
                                 '</li>');
                         });
                         i++;
