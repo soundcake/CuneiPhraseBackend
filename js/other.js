@@ -44,7 +44,8 @@ $(document).ready(function () {
         var y = Math.cos(time * 0.9) * 192 + 256;
         toggle = !toggle;
 
-        context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
+        //context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
+        context.fillStyle = toggle ? 'rgb(200,200,200)' : 'rgb(222,222,222)';
         context.beginPath();
         context.arc(x, y, 10, 0, Math.PI * 2, true);
         context.closePath();
