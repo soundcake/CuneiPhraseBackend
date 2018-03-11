@@ -271,6 +271,8 @@ WHERE web_page.link = '" . $currentPageUrl . "'
 ORDER BY vote_count DESC
 ";
     $result = $conn->query($sql);
+    $hideWhenNoKeywords = $keywords ? '' : 'style="display:none;"';
+
     //echo var_dump($result);
     if ($result->num_rows > 0) {
         echo '<p id="firstParagraph">Our users submitted the following scientific papers related to this article:</p>';
@@ -318,7 +320,7 @@ ORDER BY vote_count DESC
         echo '<input id="sortByCitations" type="checkbox"></label>';
         echo '<label for="searchSynonyms">Search Synonyms';
         echo '<input id="searchSynonyms" type="checkbox"></label>';
-        echo '<label for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
+        echo '<label '.$hideWhenNoKeywords.' for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
         echo '<input id="moreAccurateSuggest" type="checkbox"></label>';
         echo '</div>';
 
@@ -347,7 +349,7 @@ ORDER BY vote_count DESC
         echo '<input id="sortByCitations" type="checkbox"></label>';
         echo '<label for="searchSynonyms">Search Synonyms';
         echo '<input id="searchSynonyms" type="checkbox"></label>';
-        echo '<label for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
+        echo '<label '.$hideWhenNoKeywords.' for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
         echo '<input id="moreAccurateSuggest" type="checkbox"></label>';
         echo '</div>';
 
