@@ -38,6 +38,7 @@ $(document).ready(function () {
         .on('click', '.vote-from-search-link', function (evt) {
             //alert('click is happening');
             evt.preventDefault();
+            var currentTarget = $(this);
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
             var page = $('body').attr('data-index');
@@ -49,7 +50,7 @@ $(document).ready(function () {
                 context: 'yes yes',
                 reason: 'because'
             }).done(function () {
-                $(this).hide();
+                currentTarget.hide();
                 $('#initial_list').append('<li class="link-listing">' +
                     '<span class="vote-count">[1][reload to vote]</span>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
