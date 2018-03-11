@@ -71,7 +71,7 @@ $(document).ready(function () {
             //alert('page to paper id: ' + pageToPaperId + ' ---- vote count: ' + voteCount);
             $.post('https://cuneiphrase.xyz/voteup.php', {
                 page_to_paper_id: '' + pageToPaperId,
-                vote_count: '' + voteCount,
+                vote_count: '' + voteCount
             }).done(function () {
                 voteCount++;
                 //remove this one line below to stop vote spamming
@@ -91,7 +91,7 @@ $(document).ready(function () {
             //alert('page to paper id: ' + pageToPaperId + ' ---- vote count: ' + voteCount);
             $.post('https://cuneiphrase.xyz/votedown.php', {
                 page_to_paper_id: '' + pageToPaperId,
-                vote_count: '' + voteCount,
+                vote_count: '' + voteCount
             }).done(function () {
                 voteCount--;
                 //remove this one line below to stop vote spamming
