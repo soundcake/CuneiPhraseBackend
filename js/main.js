@@ -77,6 +77,7 @@ $(document).ready(function () {
                 //remove this one line below to stop vote spamming
                 currentTarget.attr('data-index', pageToPaperId + '|' + voteCount);
                 currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
+                currentTarget.parents('.link-listing').children('.vote-down').attr('data-index', pageToPaperId + '|' + voteCount);
             });
         });
 
@@ -97,6 +98,7 @@ $(document).ready(function () {
                 //remove this one line below to stop vote spamming
                 currentTarget.attr('data-index', pageToPaperId + '|' + voteCount);
                 currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
+                currentTarget.parents('.link-listing').children('.vote-up').attr('data-index', pageToPaperId + '|' + voteCount);
             });
         });
 });
