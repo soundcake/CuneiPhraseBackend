@@ -33,7 +33,7 @@ $(document).ready(function () {
     ;
 
 
-    window.addEventListener('keydown', this.check, false);
+
 
     function check(e) {
         var code = e.keyCode;
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 //alert("Left");
                 break; //Left key
             case 38:
-                alert("Up");
+                //alert("Up");
                 canvasPosY += 10;
                 break; //Up key
             case 39:
@@ -62,12 +62,16 @@ $(document).ready(function () {
     function init() {
 
         canvas = document.createElement('canvas');
+        canvas.setAttribute('id','canvas');
         canvas.width = 512;
         canvas.height = 512;
 
         context = canvas.getContext('2d');
 
         document.body.appendChild(canvas);
+
+        window.addEventListener('keydown', check(), false);
+        //document.getElementById('canvas').addEventListener('keydown', handleKeyPress);
 
     }
 
