@@ -23,8 +23,8 @@ $(document).ready(function () {
     animate();
     var spriteWidth  = 350,
         spriteHeight = 170,
-        pixelsLeft   = 170,
-        pixelsTop    = 10,
+        pixelsLeft   = 0,
+        pixelsTop    = 0,
 
         // Where are we going to draw
         // the sprite on the canvas
