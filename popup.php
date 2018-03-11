@@ -151,11 +151,11 @@ if ($conn->connect_error) {
         }
 
         button:hover {
-            background-color: #000028;
+            background-color: #000060;
         }
 
         button:active {
-            background-color: #000080;
+            background-color: #0000CC;
         }
     </style>
 
