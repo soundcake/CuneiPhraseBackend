@@ -67,6 +67,7 @@ $(document).ready(function () {
             var explodedDataIndex = dataIndex.split('|');
             var pageToPaperId = explodedDataIndex[0];
             var voteCount = explodedDataIndex[1];
+            alert('page to paper id: ' + pageToPaperId + ' ---- vote count: ' + voteCount);
             $.post('https://cuneiphrase.xyz/voteup.php', {
                 page_to_paper_id: '' + pageToPaperId,
                 vote_count: '' + voteCount,
