@@ -16,8 +16,24 @@ $(document).ready(function () {
 
     var canvas, context, toggle;
 
+    var img = new Image();
+    img.src = 'https://orig00.deviantart.net/3f65/f/2014/247/2/8/2804a71d02566ba62b02647a5ab4b688-d7xy64k.gif';
+
     init();
     animate();
+    var spriteWidth  = 350,
+        spriteHeight = 170,
+        pixelsLeft   = 170,
+        pixelsTop    = 10,
+
+        // Where are we going to draw
+        // the sprite on the canvas
+        canvasPosX   = 20,
+        canvasPosY   = 20
+    ;
+
+
+
 
     function init() {
 
@@ -38,18 +54,16 @@ $(document).ready(function () {
     }
 
     function draw() {
-        var randX = Math.random();
-        var time = new Date().getTime() * 0.002;
-        var x = Math.sin(time) * 192 + randX;
-        var y = Math.cos(time * 0.9) * randX + 256;
-        toggle = !toggle;
-
-        //context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
-        context.fillStyle = toggle ? 'rgba(240,240,240,0.85)' : 'rgba(248,248,248,0.85)';
-        context.beginPath();
-        context.arc(x, y, 10, 0, Math.PI * 2, true);
-        context.closePath();
-        context.fill();
+        context.drawImage(img,
+            pixelsLeft,
+            pixelsTop,
+            spriteWidth,
+            spriteHeight,
+            canvasPosX,
+            canvasPosY,
+            spriteWidth,
+            spriteHeight
+        );
 
     }
 });
