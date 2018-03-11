@@ -199,7 +199,7 @@ if ($conn->connect_error) {
 
     $len = strlen($page_text);
     $limitedPageText = $page_text;
-    $maxlen = 5000;
+    $maxlen = 4000;
     if ($len > $maxlen) {
         $halfpage = $len / 2;
         $y = round($halfpage - ($maxlen / 2));
