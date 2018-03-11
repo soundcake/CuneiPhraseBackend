@@ -1,16 +1,47 @@
 $(document).ready(function () {
-    $("#searchButton").on("click", function (evt) {
+    $(".search-button").on("click", function (evt) {
         evt.preventDefault();
-        if ($("#searchField").val() && $("#searchField").val().length > 2) {
+        var searchMethod = $(evt.currentTarget).attr('id');
 
-            if ($.trim($("#searchField").val().toLowerCase()) == "i'm sumerian"
-                || $.trim($("#searchField").val().toLowerCase()) == "i'll be back"
-                || $.trim($("#searchField").val().toLowerCase()) == "nobody calls me chicken!") {
+        var searchString = '', keyword1 = '', keyword2 = '';
+        var searchKeywordsArr;
+        if ($(evt.currentTarget).attr('id') == 'searchSuggested') {
+            searchKeywordsArr = $(evt.currentTarget).data('keywords');
+
+            if (searchKeywordsArr.length > 2) {
+                keyword1 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
+                keyword2 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
+                while (keyword1 == keyword2) {
+                    keyword2 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
+                }
+                searchString = keyword1 + '%20' + keyword2;
+            } else {
+                searchString = searchStringTmp.join('%20');
+            }
+
+        } else {
+            searchString = $("#searchField").val();
+        }
+        
+        if (searchString && searchString.length > 2) {
+
+            if ($.trim(searchString.toLowerCase()) == "i'm sumerian"
+                || $.trim(searchString.toLowerCase()) == "i'll be back"
+                || $.trim(searchString.toLowerCase()) == "nobody calls me chicken!") {
                 window.parent.postMessage('fontme', '*');
             }
 
             $("#search_results").html('');
-            $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + $("#searchField").val() + '%20open_access:y&format=json&resulttype=core', function (data) {
+            $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y&format=json&resulttype=core', function (data) {
+                // if (
+                //     data['hitCount'] == 0
+                //     && searchMethod == 'searchSuggested'
+                //     && searchKeywordsArr.length > 2
+                // ) {
+                //     $('#searchSuggested').click();
+                //     return;
+                // }
+
                 var i = 0;
                 $("#search_results").append('<ul>');
                 $.each(data['resultList']['result'], function (key, val) {
