@@ -162,6 +162,8 @@ if ($conn->connect_error) {
         .page-span {
             background-color: #0000CC;
             color: #CEFFFF;
+            padding: 5px;
+            border-radius: 10px;
         }
     </style>
 
