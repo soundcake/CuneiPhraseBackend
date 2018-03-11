@@ -38,14 +38,14 @@ $(document).ready(function () {
     }
 
     function draw() {
-
+        var randX = Math.random();
         var time = new Date().getTime() * 0.002;
-        var x = Math.sin(time) * 192 + 256;
-        var y = Math.cos(time * 0.9) * 192 + 256;
+        var x = Math.sin(time) * 192 + randX;
+        var y = Math.cos(time * 0.9) * randX + 256;
         toggle = !toggle;
 
         //context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
-        context.fillStyle = toggle ? 'rgb(240,240,240)' : 'rgb(248,248,248)';
+        context.fillStyle = toggle ? 'rgba(240,240,240,0.85)' : 'rgba(248,248,248,0.85)';
         context.beginPath();
         context.arc(x, y, 10, 0, Math.PI * 2, true);
         context.closePath();
