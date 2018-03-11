@@ -57,9 +57,12 @@ $(document).ready(function () {
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
+                //possible viable hack
+                /*
                 if ($('#secondParagraph').hasClass('hidden')) {
                     $('#secondParagraph').removeClass('hidden')
                 }
+                */
             });
         });
 
