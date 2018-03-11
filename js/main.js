@@ -23,7 +23,7 @@ $(document).ready(function () {
                             //$("#search_results").append('<p>url: ' + value[0]['url'] + ' --- title: ' + title + ' --- doi: ' + doi + '</p>');
                             $("#search_results").append('<li>' +
                                 '<a data-index="' + doi + '|' + url + '|' + title + '|up" class="vote-from-search-link green" href="#">&uarr; </a>' +
-                                '<a href="' + url + '" data-index="' + doi + '" target="_blank">' + title + '</a>' +
+                                '<a href="' + url + '" data-index="' + doi + '" target="_blank"> ' + title + '</a>' +
                                 '</li>');
                         });
                         i++;
