@@ -83,8 +83,8 @@ $(document).ready(function () {
             }).done(function () {
                 //alert('done is happening');
                 currentTarget.hide();
-                $('#initial_list').append('<li class="link-listing">' +
-                    '<span class="vote-count">[reload to vote] </span>' +
+                $('#initial_list').append('<li class="">' +
+                    '<span class="vote-count"> </span>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
