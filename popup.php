@@ -50,8 +50,8 @@ if ($conn->connect_error) {
         }
 
         hr {
-            color: #DDDDDD;
-            border-color: #DDDDDD;
+            color: #EEEEEE;
+            border-color: #EEEEEE;
         }
 
         #addFormContainer {
@@ -106,6 +106,7 @@ if ($conn->connect_error) {
             width: 300px;
             border: 2px solid #DDDDDD;
             border-radius: 10px;
+
         }
 
         #search_results {
@@ -145,6 +146,16 @@ if ($conn->connect_error) {
             border-radius: 10px;
             outline: none;
             border: none;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #000028;
+        }
+
+        button:active {
+            background-color: #000080;
         }
     </style>
 
