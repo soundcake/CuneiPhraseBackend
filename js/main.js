@@ -16,18 +16,26 @@ $(document).ready(function () {
         var searchMethod = $(evt.currentTarget).attr('id');
         $('#searchSuggested').data('count', 0);
 
-        var searchString = '', keyword1 = '', keyword2 = '';
+        var searchString = '', tmpKeyword = '', tmpKeywordIndex;
         var searchKeywordsArr;
         if (searchMethod == 'searchSuggested') {
             searchKeywordsArr = $(evt.currentTarget).data('keywords');
 
-            if (searchKeywordsArr.length > 2) {
-                keyword1 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
-                keyword2 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
-                while (keyword1 == keyword2) {
-                    keyword2 = searchKeywordsArr[Math.floor(Math.random() * searchKeywordsArr.length)];
+            var numKeywordsToUse = 2;
+            if ($("#moreAccurateSuggest").is(':checked')) {
+                numKeywordsToUse = 3;
+            }
+
+            if (searchKeywordsArr.length > numKeywordsToUse) {
+                for (i = 0; i < numKeywordsToUse; i++) {
+                    tmpKeywordIndex = Math.floor(Math.random() * searchKeywordsArr.length);
+                    tmpKeyword = searchKeywordsArr[tmpKeywordIndex];
+                    searchKeywordsArr.splice(tmpKeywordIndex, 1);
+                    if (i > 0) {
+                        searchString = searchString + '%20';
+                    }
+                    searchString = searchString + tmpKeyword;
                 }
-                searchString = keyword1 + '%20' + keyword2;
             } else {
                 searchString = searchKeywordsArr.join('%20');
             }
@@ -168,7 +176,10 @@ $(document).ready(function () {
 
                 if (searchMethod == 'searchSuggested') {
                     var numKeywords = $('#searchSuggested').data('numkeywords');
-                    if (numKeywords > 2) {
+                    if (
+                        numKeywords > 2
+                        || ($("#moreAccurateSuggest").is(':checked') && numKeywords > 3)
+                    ) {
                         $('#searchSuggested').html('Suggest More');
                     }
                 }
