@@ -79,4 +79,24 @@ $(document).ready(function () {
                 currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
             });
         });
+
+    $(document)
+        .on('click', '.vote-down', function (evt) {
+            evt.preventDefault();
+            var currentTarget = $(this);
+            var dataIndex = $(this).attr('data-index');
+            var explodedDataIndex = dataIndex.split('|');
+            var pageToPaperId = explodedDataIndex[0];
+            var voteCount = explodedDataIndex[1];
+            //alert('page to paper id: ' + pageToPaperId + ' ---- vote count: ' + voteCount);
+            $.post('https://cuneiphrase.xyz/voteup.php', {
+                page_to_paper_id: '' + pageToPaperId,
+                vote_count: '' + voteCount,
+            }).done(function () {
+                voteCount--;
+                //remove this one line below to stop vote spamming
+                currentTarget.attr('data-index', pageToPaperId + '|' + voteCount);
+                currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
+            });
+        });
 });
