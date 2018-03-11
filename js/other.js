@@ -21,19 +21,43 @@ $(document).ready(function () {
 
     init();
     animate();
-    var spriteWidth  = 350,
+    var spriteWidth = 350,
         spriteHeight = 170,
-        pixelsLeft   = 0,
-        pixelsTop    = 0,
+        pixelsLeft = 0,
+        pixelsTop = 0,
 
         // Where are we going to draw
         // the sprite on the canvas
-        canvasPosX   = 20,
-        canvasPosY   = 20
+        canvasPosX = 20,
+        canvasPosY = 20
     ;
 
 
+    window.addEventListener('keydown', this.check, false);
 
+    function check(e) {
+        var code = e.keyCode;
+        switch (code) {
+            case 37:
+                canvasPosX -= 10;
+                //alert("Left");
+                break; //Left key
+            case 38:
+                alert("Up");
+                canvasPosY += 10;
+                break; //Up key
+            case 39:
+                //alert("Right");
+                canvasPosX += 10;
+                break; //Right key
+            case 40:
+                //alert("Down");
+                canvasPosY -= 10;
+                break; //Down key
+            default:
+            //alert(code); //Everything else
+        }
+    }
 
     function init() {
 
