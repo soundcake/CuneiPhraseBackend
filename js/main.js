@@ -48,7 +48,9 @@ $(document).ready(function () {
                 paper_link: '' + explodedDataIndex[1],
                 context: 'yes yes',
                 reason: 'because'
-            }).done(function () {
+            }).done(function (data) {
+                //var parsedData = $.parseJSON(data);
+                alert(data);
                 $(this).hide();
                 $('#initial_list').append('<li class="link-listing">' +
                     '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|up" class="vote-link green" href="#">&uarr;</a>' +
