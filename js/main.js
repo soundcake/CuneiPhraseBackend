@@ -49,8 +49,8 @@ $(document).ready(function () {
                 context: 'yes yes',
                 reason: 'because'
             }).done(function (data) {
-                //var parsedData = $.parseJSON(data);
-                alert(data);
+                var parsedData = $.parseJSON(data);
+                alert(data['page_to_paper_id']);
                 $(this).hide();
                 $('#initial_list').append('<li class="link-listing">' +
                     '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|up" class="vote-link green" href="#">&uarr;</a>' +
