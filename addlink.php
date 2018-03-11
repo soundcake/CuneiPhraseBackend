@@ -76,14 +76,6 @@ if ($paperId && $pageId) {
 VALUES ($paperId,$pageId,'$context','$reason', 1)";
     $result = $conn->query($sql);
 //
-    $newSql = "SELECT id FROM page_to_paper WHERE academic_paper_id = '$paperId' AND web_page_id = '$pageId'";
-    $newResult = $conn->query($newSql);
-    $resultAssoc = $newResult->fetch_assoc();
-    $pageToPaperId = $resultAssoc['id'];
-    //
-    $return['page_to_paper_id'] = $pageToPaperId;
-    echo $return;
-    exit;
 }
 
 

@@ -48,14 +48,10 @@ $(document).ready(function () {
                 paper_link: '' + explodedDataIndex[1],
                 context: 'yes yes',
                 reason: 'because'
-            }).done(function (data) {
-                var parsedData = $.parseJSON(data);
-                alert(data['page_to_paper_id']);
+            }).done(function () {
                 $(this).hide();
                 $('#initial_list').append('<li class="link-listing">' +
-                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|up" class="vote-link green" href="#">&uarr;</a>' +
-                    '<span class="vote-count">[1]</span>' +
-                    '<a data-index="' + explodedDataIndex[0] + '|' + explodedDataIndex[1] + '|' + explodedDataIndex[2] + '|down" class="vote-link red" href="#">&darr;</a>' +
+                    '<span class="vote-count">[1][reload to vote]</span>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
