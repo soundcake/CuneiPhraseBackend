@@ -36,7 +36,7 @@ $(document).ready(function () {
     //
     $(document)
         .on('click', '.vote-from-search-link', function (evt) {
-            alert('click is happening');
+            //alert('click is happening');
             evt.preventDefault();
             var currentTarget = $(this);
             var dataIndex = $(this).attr('data-index');
@@ -50,6 +50,7 @@ $(document).ready(function () {
                 context: 'yes yes',
                 reason: 'because'
             }).done(function () {
+                alert('done is happening');
                 currentTarget.hide();
                 $('#initial_list').append('<li class="link-listing">' +
                     '<span class="vote-count">[1][reload to vote]</span>' +
