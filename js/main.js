@@ -33,14 +33,14 @@ $(document).ready(function () {
 
             $("#search_results").html('');
             $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y&format=json&resulttype=core', function (data) {
-                if (
-                    data['hitCount'] == 0
-                    && searchMethod == 'searchSuggested'
-                    && searchKeywordsArr.length > 2
-                ) {
-                    $('#searchSuggested').click();
-                    return;
-                }
+                // if (
+                //     data['hitCount'] == 0
+                //     && searchMethod == 'searchSuggested'
+                //     && searchKeywordsArr.length > 2
+                // ) {
+                //     $('#searchSuggested').click();
+                //     return;
+                // }
 
                 var i = 0;
                 $("#search_results").append('<ul>');
