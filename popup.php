@@ -158,6 +158,11 @@ if ($conn->connect_error) {
         button:active {
             background-color: #0000CC;
         }
+
+        .page-span {
+            background-color: #0000CC;
+            color: #CEFFFF;
+        }
     </style>
 
     <script src="/js/jquery.js"></script>
@@ -170,7 +175,7 @@ if ($conn->connect_error) {
 <h1>CuneiPhrase</h1>
 
 <?php if ($currentPageUrl && strlen($currentPageUrl) > 0): ?>
-    <p>You are on page <?php echo $currentPageUrl; ?></p>
+    <p>You are on page: <span class="page-span"><?php echo $currentPageUrl; ?></span></p>
 
     <?php
     $keywords = '';
