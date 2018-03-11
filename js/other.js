@@ -45,7 +45,7 @@ $(document).ready(function () {
         toggle = !toggle;
 
         //context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
-        context.fillStyle = toggle ? 'rgb(200,200,200)' : 'rgb(222,222,222)';
+        context.fillStyle = toggle ? 'rgb(240,240,240)' : 'rgb(248,248,248)';
         context.beginPath();
         context.arc(x, y, 10, 0, Math.PI * 2, true);
         context.closePath();
