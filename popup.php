@@ -163,7 +163,7 @@ if ($conn->connect_error) {
             background-color: #0000CC;
             color: #CEFFFF;
             padding: 5px;
-            border-radius: 10px;
+            border-radius: 5px;
         }
     </style>
 
