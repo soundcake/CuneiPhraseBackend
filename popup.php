@@ -165,9 +165,9 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
             //echo var_dump($row);
             //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
             echo '<li class="link-listing">';
-            echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-link green" href="#">&uarr;</a>';
+            echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-up green" href="#">&uarr;</a>';
             echo '<span class="vote-count">[' . $row['vote_count'] . ']</span>';
-            echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-link red" href="#">&darr;</a>';
+            echo '<a data-index="' . $row['page_to_paper_id'] . '|' . $row['vote_count'] . '" class="vote-up red" href="#">&darr;</a>';
             echo '<a href="' . $row['link'] . '" target="_blank">' . $row['title'] . '</a>';
             echo '</li>';
         }

@@ -61,13 +61,13 @@ $(document).ready(function () {
         });
 
     $(document)
-        .on('click', '.vote-link', function (evt) {
+        .on('click', '.vote-up', function (evt) {
             evt.preventDefault();
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
             var pageToPaperId = explodedDataIndex[0];
             var voteCount = explodedDataIndex[1];
-            $.post('https://cuneiphrase.xyz/addlink.php', {
+            $.post('https://cuneiphrase.xyz/voteup.php', {
                 page_to_paper_id: '' + pageToPaperId,
                 vote_count: '' + voteCount,
             }).done(function () {
