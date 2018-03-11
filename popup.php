@@ -52,6 +52,7 @@ if ($conn->connect_error) {
         hr {
             color: #EEEEEE;
             border-color: #EEEEEE;
+            opacity: 0.45;
         }
 
         #addFormContainer {
