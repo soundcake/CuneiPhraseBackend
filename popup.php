@@ -136,6 +136,7 @@ if ($conn->connect_error) {
 
     <script src="/js/jquery.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/other.js"></script>
 
 </head>
 <body id="main_body" data-index="<?php echo $currentPageUrl; ?>">
