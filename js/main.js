@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#div_below').Animify({'effect': 'squares', 'background-color': '#0cf', 'intro': false});
     $(".search-button").on("click", function (evt) {
         evt.preventDefault();
         var searchMethod = $(evt.currentTarget).attr('id');
@@ -22,7 +23,7 @@ $(document).ready(function () {
         } else {
             searchString = $("#searchField").val();
         }
-        
+
         if (searchString && searchString.length > 2) {
 
             if ($.trim(searchString.toLowerCase()) == "i'm sumerian"

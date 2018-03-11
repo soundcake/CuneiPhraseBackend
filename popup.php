@@ -135,10 +135,11 @@ if ($conn->connect_error) {
     </style>
 
     <script src="/js/jquery.js"></script>
+    <script src="/js/animify.js"></script>
     <script src="/js/main.js"></script>
 
 </head>
-<body data-index="<?php echo $currentPageUrl; ?>">
+<body id="main_body" data-index="<?php echo $currentPageUrl; ?>">
 
 
 <h1>CuneiPhrase</h1>
@@ -155,8 +156,8 @@ if ($conn->connect_error) {
     $limitedPageText = $page_text;
     $maxlen = 5000;
     if ($len > $maxlen) {
-        $halfpage = $len/2;
-        $y = round($halfpage-($maxlen/2));
+        $halfpage = $len / 2;
+        $y = round($halfpage - ($maxlen / 2));
         $limitedPageText = substr($page_text, $y, $maxlen);
     }
 
@@ -164,37 +165,38 @@ if ($conn->connect_error) {
     //$path = '/text/analytics/v2.0/sentiment';
     $path = '/text/analytics/v2.0/keyPhrases';
 
-    function GetSentiment ($host, $path, $key, $data) {
+    function GetSentiment($host, $path, $key, $data)
+    {
 
         $headers = "Content-type: text/json\r\n" .
             "Ocp-Apim-Subscription-Key: $key\r\n";
 
-        $data = json_encode ($data);
+        $data = json_encode($data);
 
         // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
         // http://php.net/manual/en/function.stream-context-create.php
-        $options = array (
-            'http' => array (
+        $options = array(
+            'http' => array(
                 'header' => $headers,
                 'method' => 'POST',
                 'content' => $data
             )
         );
-        $context  = stream_context_create ($options);
-        $result = file_get_contents ($host . $path, false, $context);
+        $context = stream_context_create($options);
+        $result = file_get_contents($host . $path, false, $context);
         return $result;
     }
 
-    $data = array (
-        'documents' => array (
-            array ( 'id' => '1', 'language' => 'en', 'text' => $limitedPageText ),
+    $data = array(
+        'documents' => array(
+            array('id' => '1', 'language' => 'en', 'text' => $limitedPageText),
         )
     );
 
-    $result = GetSentiment ($host, $path, $azureaccesskey, $data);
+    $result = GetSentiment($host, $path, $azureaccesskey, $data);
     $decodedResult = json_decode($result);
     $azureKeywords = $decodedResult->documents[0]->keyPhrases;
-    $keywords = implode('%20',$azureKeywords);
+    $keywords = implode('%20', $azureKeywords);
     ?>
 <?php else: ?>
     <p>Can't find your page</p>
@@ -261,7 +263,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '</div>';
         ?>
@@ -279,7 +281,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '</div>';
         ?>
