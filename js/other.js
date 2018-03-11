@@ -70,7 +70,7 @@ $(document).ready(function () {
 
         document.body.appendChild(canvas);
 
-        window.addEventListener('keydown', check(), false);
+        document.body.addEventListener('keydown', check(), false);
         //document.getElementById('canvas').addEventListener('keydown', handleKeyPress);
 
     }
