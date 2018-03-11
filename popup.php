@@ -160,7 +160,7 @@ if ($conn->connect_error) {
         }
 
         .page-span {
-            color: #0000CC;
+            font-weight: bold;
         }
     </style>
 
