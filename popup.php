@@ -13,6 +13,7 @@
  * @var $username
  * @var $password
  * @var $dbname
+ * @var $azureaccesskey
  */
 extract(parse_ini_file('config.ini'));
 
@@ -92,6 +93,11 @@ if ($conn->connect_error) {
             margin-top: 5px;
         }
 
+        #searchSuggested {
+            float: left;
+            margin-top: 5px;
+        }
+
         #searchField {
             float: left;
             margin-top: 5px;
@@ -139,6 +145,57 @@ if ($conn->connect_error) {
 
 <?php if ($currentPageUrl && strlen($currentPageUrl) > 0): ?>
     <p>You are on page <?php echo $currentPageUrl; ?></p>
+
+    <?php
+    $keywords = '';
+    $page = file_get_contents($currentPageUrl);
+    $page_text = strip_tags($page);
+
+    $len = strlen($page_text);
+    $limitedPageText = $page_text;
+    $maxlen = 5000;
+    if ($len > $maxlen) {
+        $halfpage = $len/2;
+        $y = round($halfpage-($maxlen/2));
+        $limitedPageText = substr($page_text, $y, $maxlen);
+    }
+
+    $host = 'https://westcentralus.api.cognitive.microsoft.com';
+    //$path = '/text/analytics/v2.0/sentiment';
+    $path = '/text/analytics/v2.0/keyPhrases';
+
+    function GetSentiment ($host, $path, $key, $data) {
+
+        $headers = "Content-type: text/json\r\n" .
+            "Ocp-Apim-Subscription-Key: $key\r\n";
+
+        $data = json_encode ($data);
+
+        // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
+        // http://php.net/manual/en/function.stream-context-create.php
+        $options = array (
+            'http' => array (
+                'header' => $headers,
+                'method' => 'POST',
+                'content' => $data
+            )
+        );
+        $context  = stream_context_create ($options);
+        $result = file_get_contents ($host . $path, false, $context);
+        return $result;
+    }
+
+    $data = array (
+        'documents' => array (
+            array ( 'id' => '1', 'language' => 'en', 'text' => $limitedPageText ),
+        )
+    );
+
+    $result = GetSentiment ($host, $path, $azureaccesskey, $data);
+    $decodedResult = json_decode($result);
+    $azureKeywords = $decodedResult->documents[0]->keyPhrases;
+    $keywords = implode('%20',$azureKeywords);
+    ?>
 <?php else: ?>
     <p>Can't find your page</p>
 <?php endif; ?>
@@ -202,7 +259,10 @@ ORDER BY vote_count DESC
         echo '<div id="search_form">';
         echo '<label for="searchField">Search academic papers for more:</label>';
         echo '<input type="text" id="searchField" name="searchField"/>';
-        echo '<button type="button" id="searchButton">Search</button>';
+        echo '<button type="button" id="searchButton" class="search-button">Search</button>';
+        if ($keywords) {
+            echo '<button type="button" id="searchSuggested" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+        }
         echo '</div>';
         ?>
         <div id="search_results"></div>
@@ -217,7 +277,10 @@ ORDER BY vote_count DESC
         echo '<div id="search_form">';
         echo '<label for="searchField">Search academic papers for more:</label>';
         echo '<input type="text" id="searchField" name="searchField"/>';
-        echo '<button type="button" id="searchButton">Search</button>';
+        echo '<button type="button" id="searchButton" class="search-button">Search</button>';
+        if ($keywords) {
+            echo '<button type="button" id="searchSuggested" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+        }
         echo '</div>';
         ?>
         <div id="search_results"></div>
