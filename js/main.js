@@ -16,7 +16,7 @@ $(document).ready(function () {
                 }
                 searchString = keyword1 + '%20' + keyword2;
             } else {
-                searchString = searchStringTmp.join('%20');
+                searchString = searchKeywordsArr.join('%20');
             }
 
         } else {
@@ -33,14 +33,19 @@ $(document).ready(function () {
 
             $("#search_results").html('');
             $.getJSON('https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y&format=json&resulttype=core', function (data) {
-                // if (
-                //     data['hitCount'] == 0
-                //     && searchMethod == 'searchSuggested'
-                //     && searchKeywordsArr.length > 2
-                // ) {
-                //     $('#searchSuggested').click();
-                //     return;
-                // }
+                if (
+                    data['hitCount'] == 0
+                    && searchMethod == 'searchSuggested'
+                    && searchKeywordsArr.length > 2
+                ) {
+                    var count = $('#searchSuggested').data('count');
+                    console.log(count);
+                    if (count < 10) {
+                        $('#searchSuggested').data('count', count+1);
+                        $('#searchSuggested').click();
+                    }
+                    return;
+                }
 
                 var i = 0;
                 $("#search_results").append('<ul>');
