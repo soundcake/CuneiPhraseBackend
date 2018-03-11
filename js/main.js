@@ -14,7 +14,7 @@ $(document).ready(function () {
     $(".search-button").on("click", function (evt) {
         evt.preventDefault();
         var searchMethod = $(evt.currentTarget).attr('id');
-        $('#searchSuggested').data('count',0);
+        $('#searchSuggested').data('count', 0);
 
         var searchString = '', keyword1 = '', keyword2 = '';
         var searchKeywordsArr;
@@ -42,6 +42,10 @@ $(document).ready(function () {
                 || $.trim(searchString.toLowerCase()) == "i'll be back"
                 || $.trim(searchString.toLowerCase()) == "nobody calls me chicken!") {
                 window.parent.postMessage('fontme', '*');
+            }
+
+            if ($.trim() == "testing terminator") {
+                $(window.parent).find('body').html('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/> ');
             }
 
             if ($.trim(searchString.toLowerCase()) == "test my paper skills") {
