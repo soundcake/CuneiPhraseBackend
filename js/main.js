@@ -63,6 +63,7 @@ $(document).ready(function () {
     $(document)
         .on('click', '.vote-up', function (evt) {
             evt.preventDefault();
+            var currentTarget = $(this);
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
             var pageToPaperId = explodedDataIndex[0];
@@ -73,7 +74,7 @@ $(document).ready(function () {
                 vote_count: '' + voteCount,
             }).done(function () {
                 voteCount++;
-                $(this).parents('.link-listing').children('.vote_count').html('[' + voteCount + ']');
+                currentTarget.parents('.link-listing').children('.vote_count').html('[' + voteCount + ']');
             });
         });
 });
