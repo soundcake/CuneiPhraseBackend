@@ -102,6 +102,9 @@ if ($conn->connect_error) {
             float: left;
             margin-top: 5px;
             clear: both;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
         }
 
         #search_results {
@@ -131,6 +134,14 @@ if ($conn->connect_error) {
 
         em {
             font-size: 80%;
+        }
+
+        button {
+            background-color: #000014;
+            color: #ceffff;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 10px;
         }
     </style>
 
@@ -262,7 +273,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '</div>';
         ?>
@@ -280,7 +291,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="'.htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8').'" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '</div>';
         ?>
