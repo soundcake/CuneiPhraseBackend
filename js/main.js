@@ -47,13 +47,22 @@ $(document).ready(function () {
         if (searchString && searchString.length > 2) {
 
             if ($.trim(searchString.toLowerCase()) == "i'm sumerian"
-                || $.trim(searchString.toLowerCase()) == "i'll be back"
-                || $.trim(searchString.toLowerCase()) == "nobody calls me chicken!") {
+                || $.trim(searchString.toLowerCase()) == "sumerian is awesome"
+                || $.trim(searchString.toLowerCase()) == "sumerian chicken") {
                 window.parent.postMessage('fontme', '*');
             }
 
-            if ($.trim(searchString.toLowerCase()) == "testing terminator") {
-                $(window.parent.document).html('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/> ');
+            if ($.trim(searchString.toLowerCase()) == "i'll be back") {
+                //window.parent.document.innerHtml('<img src="http://digitalspyuk.cdnds.net/16/26/1600x678/gallery-1467370493-terminator-2.jpg" alt="terminator"/>');
+                window.parent.postMessage('terminator', '*');
+            }
+
+            if ($.trim(searchString.toLowerCase()) == "nobody calls me chicken!") {
+                window.parent.postMessage('back-to-the-future', '*');
+            }
+
+            if ($.trim(searchString.toLowerCase()) == "you talking to me?") {
+                window.parent.postMessage('taxi-driver', '*');
             }
 
             if ($.trim(searchString.toLowerCase()) == "test my paper skills") {
