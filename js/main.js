@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    window.parent.postMessage('iloaded', '*');
 
     $('#advancedButton').on('click', function (evt) {
         evt.preventDefault();
@@ -138,7 +139,7 @@ $(document).ready(function () {
                 return;
             }
 
-            $("#search_results").html('');
+            $("#search_results").html('<svg id="loadingRipple" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple"><circle cx="50" cy="50" r="0" fill="none" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.width}}" stroke="#182731" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="-0.5s" repeatCount="indefinite"></animate><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="-0.5s" repeatCount="indefinite"></animate></circle><circle cx="50" cy="50" r="0" fill="none" ng-attr-stroke="{{config.c2}}" ng-attr-stroke-width="{{config.width}}" stroke="#a7d4ec" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate></circle></svg>');
             var searchUrl = 'https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=' + searchString + '%20open_access:y';
             if ($("#sortByCitations").is(':checked')) {
                 searchUrl = searchUrl + "%20sort_cited:y";
@@ -164,6 +165,7 @@ $(document).ready(function () {
                 }
 
                 var i = 0;
+                $("#search_results").html('');
                 $("#search_results").append('<ul>');
                 $.each(data['resultList']['result'], function (key, val) {
                     if (i < 5) {
