@@ -65,15 +65,11 @@ $(document).ready(function () {
             evt.preventDefault();
             var dataIndex = $(this).attr('data-index');
             var explodedDataIndex = dataIndex.split('|');
-            var page = $('body').attr('data-index');
-            var voteCount = explodedDataIndex[4];
+            var pageToPaperId = explodedDataIndex[0];
+            var voteCount = explodedDataIndex[1];
             $.post('https://cuneiphrase.xyz/addlink.php', {
-                page: '' + page,
-                doi: '' + explodedDataIndex[0],
-                paper_title: '' + explodedDataIndex[2],
-                paper_link: '' + explodedDataIndex[1],
-                context: 'yes yes',
-                reason: 'because'
+                page_to_paper_id: '' + pageToPaperId,
+                vote_count: '' + voteCount,
             }).done(function () {
                 voteCount++;
                 $(this).parents('.link-listing').children().find('.vote_count').html('[' + voteCount + ']');
