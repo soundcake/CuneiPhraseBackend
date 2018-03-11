@@ -14,10 +14,11 @@ $(document).ready(function () {
     $(".search-button").on("click", function (evt) {
         evt.preventDefault();
         var searchMethod = $(evt.currentTarget).attr('id');
+        $('#searchSuggested').data('count',0);
 
         var searchString = '', keyword1 = '', keyword2 = '';
         var searchKeywordsArr;
-        if ($(evt.currentTarget).attr('id') == 'searchSuggested') {
+        if (searchMethod == 'searchSuggested') {
             searchKeywordsArr = $(evt.currentTarget).data('keywords');
 
             if (searchKeywordsArr.length > 2) {
@@ -160,6 +161,13 @@ $(document).ready(function () {
                     }
                 });
                 $("#search_results").append('</ul>');
+
+                if (searchMethod == 'searchSuggested') {
+                    var numKeywords = $('#searchSuggested').data('numkeywords');
+                    if (numKeywords > 2) {
+                        $('#searchSuggested').html('Suggest More');
+                    }
+                }
             });
         }
     });
