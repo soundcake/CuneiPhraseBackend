@@ -74,7 +74,7 @@ $(document).ready(function () {
                 vote_count: '' + voteCount,
             }).done(function () {
                 voteCount++;
-                currentTarget.parents('.link-listing').children('.vote_count').html('[' + voteCount + ']');
+                currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
             });
         });
 });
