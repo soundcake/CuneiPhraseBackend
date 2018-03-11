@@ -60,7 +60,7 @@ $resultAssoc = $result->fetch_assoc();
 $pageId = $resultAssoc['id'];
 
 
-$sql = "SELECT id, vote_count FROM academic_paper WHERE doi = '$doi'";
+$sql = "SELECT id FROM academic_paper WHERE doi = '$doi'";
 $result = $conn->query($sql);
 if ($result->num_rows === 0) {
     $sql = "INSERT INTO academic_paper(doi, title, link) VALUES ('$doi', '$paperTitle', '$paperLink')";
