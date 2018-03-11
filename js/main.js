@@ -74,6 +74,8 @@ $(document).ready(function () {
                 vote_count: '' + voteCount,
             }).done(function () {
                 voteCount++;
+                //remove this one line below to stop vote spamming
+                currentTarget.attr('data-index', dataIndex + '|' + voteCount);
                 currentTarget.parents('.link-listing').children('.vote-count').html('[' + voteCount + ']');
             });
         });
