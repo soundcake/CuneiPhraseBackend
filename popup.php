@@ -50,8 +50,8 @@ if ($conn->connect_error) {
         }
 
         hr {
-            color: #CEFFFF;
-            border-color: #CEFFFF;
+            color: #DDDDDD;
+            border-color: #DDDDDD;
         }
 
         #addFormContainer {
@@ -103,7 +103,8 @@ if ($conn->connect_error) {
             margin-top: 5px;
             clear: both;
             padding: 10px;
-            border: 2px solid #ccc;
+            width: 300px;
+            border: 2px solid #DDDDDD;
             border-radius: 10px;
         }
 
@@ -142,6 +143,7 @@ if ($conn->connect_error) {
             font-weight: bold;
             padding: 10px;
             border-radius: 10px;
+            outline: none;
         }
     </style>
 
