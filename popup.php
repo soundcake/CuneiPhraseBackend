@@ -83,14 +83,20 @@ if ($conn->connect_error) {
         }
 
         input[type=checkbox] {
+            float: left;
             position: relative;
-            top: 4px;
+            top: -2px;
         }
 
         label {
             width: 100%;
             clear: both;
             float: left;
+        }
+
+        #advancedControls label {
+            top: 4px;
+            position: relative;
         }
 
         #searchButton {
@@ -235,6 +241,7 @@ if ($conn->connect_error) {
     $result = GetSentiment($host, $path, $azureaccesskey, $data);
     $decodedResult = json_decode($result);
     $azureKeywords = $decodedResult->documents[0]->keyPhrases;
+    $numKeywords = count($azureKeywords);
     $keywords = implode('%20', $azureKeywords);
     ?>
 <?php else: ?>
@@ -302,7 +309,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-count="0" data-numkeywords="'.$numKeywords.'" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '<a href="#" id="advancedButton">advanced</a>';
 
@@ -311,6 +318,8 @@ ORDER BY vote_count DESC
         echo '<input id="sortByCitations" type="checkbox"></label>';
         echo '<label for="searchSynonyms">Search Synonyms';
         echo '<input id="searchSynonyms" type="checkbox"></label>';
+        echo '<label for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
+        echo '<input id="moreAccurateSuggest" type="checkbox"></label>';
         echo '</div>';
 
         echo '</div>';
@@ -329,7 +338,7 @@ ORDER BY vote_count DESC
         echo '<input type="text" id="searchField" name="searchField"/>';
         echo '<button type="button" id="searchButton" class="search-button">Search</button>';
         if ($keywords) {
-            echo '<button type="button" id="searchSuggested" data-count="0" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
+            echo '<button type="button" id="searchSuggested" data-count="0" data-numkeywords="'.$numKeywords.'" data-keywords="' . htmlspecialchars(json_encode($azureKeywords), ENT_QUOTES, 'UTF-8') . '" class="search-button">Show Suggested</button>';
         }
         echo '<a href="#" id="advancedButton">advanced</a>';
 
@@ -338,6 +347,8 @@ ORDER BY vote_count DESC
         echo '<input id="sortByCitations" type="checkbox"></label>';
         echo '<label for="searchSynonyms">Search Synonyms';
         echo '<input id="searchSynonyms" type="checkbox"></label>';
+        echo '<label for="moreAccurateSuggest">More Accurate Suggest (may return fewer)';
+        echo '<input id="moreAccurateSuggest" type="checkbox"></label>';
         echo '</div>';
 
         echo '</div>';
