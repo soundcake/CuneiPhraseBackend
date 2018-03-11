@@ -118,6 +118,14 @@ if ($conn->connect_error) {
             font-weight: normal;
             color: #666;
         }
+
+        .hidden {
+            display: none;
+        }
+
+        em {
+            font-size: 80%;
+        }
     </style>
 
     <script src="/js/jquery.js"></script>
@@ -159,6 +167,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
     //echo var_dump($result);
     if ($result->num_rows > 0) {
         echo '<p id="firstParagraph">Our users submitted the following scientific papers related to this article:</p>';
+        echo '<p id="secondParagraph" class="green hidden"><em>[New items added - please re-load to re-order]</em></p>';
         echo '<ul id="initial_list">';
         // output data of each row
         while ($row = $result->fetch_assoc()) {
@@ -199,6 +208,7 @@ WHERE web_page.link = '" . $currentPageUrl . "'";
         echo '<hr />';
     } else {
         echo '<p id="firstParagraph">No user-submitted scientific papers found for this.</p > ';
+        echo '<p id="secondParagraph" class="green hidden"><em>[New items added - please re-load to re-order]</em></p>';
         echo '<ul id="initial_list">';
         echo '</ul>';
         echo '<hr />';

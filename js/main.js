@@ -53,10 +53,13 @@ $(document).ready(function () {
                 //alert('done is happening');
                 currentTarget.hide();
                 $('#initial_list').append('<li class="link-listing">' +
-                    '<span class="vote-count">[1][reload to vote]</span>' +
+                    '<span class="vote-count">[reload to vote]</span>' +
                     '<a href="' + explodedDataIndex[1] + '" target="_blank">' + explodedDataIndex[2] + '</a>' +
                     '</li>');
                 $('#firstParagraph').html('Our users submitted the following scientific papers related to this article:');
+                if ($('#secondParagraph').hasClass('hidden')) {
+                    $('#secondParagraph').removeClass('hidden')
+                }
             });
         });
 
