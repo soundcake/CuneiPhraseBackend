@@ -36,7 +36,7 @@ $(document).ready(function () {
     //
     $(document)
         .on('click', '.vote-from-search-link', function (evt) {
-            //alert('click is happening');
+            alert('click is happening');
             evt.preventDefault();
             var currentTarget = $(this);
             var dataIndex = $(this).attr('data-index');
