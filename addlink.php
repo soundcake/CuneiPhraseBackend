@@ -77,7 +77,7 @@ VALUES ($paperId,$pageId,'$context','$reason', 1)";
     $result = $conn->query($sql);
     $resultAssoc = $result->fetch_assoc();
     $pageToPaperId = $resultAssoc['id'];
-    echo $pageToPaperId;
+    echo 4;
     exit;
 }
 
