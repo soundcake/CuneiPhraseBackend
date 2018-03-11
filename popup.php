@@ -144,6 +144,7 @@ if ($conn->connect_error) {
             padding: 10px;
             border-radius: 10px;
             outline: none;
+            border: none;
         }
     </style>
 
