@@ -106,7 +106,6 @@ if ($conn->connect_error) {
             width: 300px;
             border: 2px solid #DDDDDD;
             border-radius: 10px;
-
         }
 
         #search_results {
@@ -148,6 +147,7 @@ if ($conn->connect_error) {
             border: none;
             margin-right: 5px;
             cursor: pointer;
+            float: left;
         }
 
         button:hover {
